@@ -23,4 +23,5 @@ RUN echo "Building on $BUILDPLATFORM for $TARGETPLATFORM" && \
 FROM alpine:latest
 COPY --from=builder /tailwindcss /usr/local/bin/tailwindcss
 WORKDIR /workdir
+RUN apk add --no-cache gcompat 
 ENTRYPOINT ["tailwindcss"]
