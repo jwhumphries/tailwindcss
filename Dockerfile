@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine:latest@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a AS builder
+FROM --platform=$BUILDPLATFORM alpine:latest@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS builder
 
 RUN apk add --no-cache curl jq
 
@@ -20,7 +20,7 @@ RUN echo "Building on $BUILDPLATFORM for $TARGETPLATFORM" && \
     curl -sL -o /tailwindcss "$URL" && \
     chmod +x /tailwindcss
 
-FROM alpine:latest@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+FROM alpine:latest@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 COPY --from=builder /tailwindcss /usr/local/bin/tailwindcss
 WORKDIR /workdir
 RUN apk add --no-cache gcompat 
